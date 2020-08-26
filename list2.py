@@ -5,7 +5,7 @@ Kenzie assignment: List2
 """
 # Your name, plus anyone who helped you with this assignment.
 # Give credit where credit is due.
-__author__ = "???"
+__author__ = "Larry Scott, a Smarter Way to Python, and Techie Delight-how to remove empty strings "
 
 # Copyright 2010 Google Inc.
 # Licensed under the Apache License, Version 2.0
@@ -28,8 +28,11 @@ __author__ = "???"
 
 
 def remove_adjacent(nums):
-    # your code here
-    return
+    no_adjacent = nums[:1]
+    for num in nums[1:]:
+        if num != no_adjacent[-1]:
+            no_adjacent.append(num)
+    return no_adjacent
 
 
 # E. zip_merge
@@ -43,8 +46,8 @@ def remove_adjacent(nums):
 
 
 def zip_merge(list1, list2):
-    # your code here
-    return
+    merge_my_list = zip(list1, list2)
+    return merge_my_list
 
 
 # F. empty_filter
@@ -57,10 +60,13 @@ def zip_merge(list1, list2):
 
 
 def empty_filter(list1):
-    # your code here
-    return
-
-
+    try:
+        while True:
+            list1.remove("")
+            list1.remove(None)
+    except ValueError:
+        pass
+    return list1
 # G. linear_merge
 # Given two lists sorted in increasing order, create and
 # return a merged list of all the elements in sorted order.
@@ -73,8 +79,15 @@ def empty_filter(list1):
 
 
 def linear_merge(list1, list2):
-    # your code here
-    return
+    the_answer = []
+    while len(list1) and len(list2):
+        if list1[0] < list2[0]:
+            the_answer.append(list1.pop(0))
+        else:
+            the_answer.append(list2.pop(0))
+    the_answer.extend(list1)
+    the_answer.extend(list2)
+    return the_answer
 
 
 # Provided simple test() function used in main() to print
