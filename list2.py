@@ -46,7 +46,7 @@ def remove_adjacent(nums):
 
 
 def zip_merge(list1, list2):
-    merge_my_list = zip(list1, list2)
+    merge_my_list = list(map(''.join, zip(list1, list2)))
     return merge_my_list
 
 
