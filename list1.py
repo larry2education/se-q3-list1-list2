@@ -5,7 +5,7 @@ Kenzie assignment: List1
 """
 # Your name, plus anyone who helped you with this assignment.
 # Give credit where credit is due.
-__author__ = "???"
+__author__ = "Larry Scott"
 
 # Copyright 2010 Google Inc.
 # Licensed under the Apache License, Version 2.0
@@ -26,8 +26,11 @@ __author__ = "???"
 
 
 def match_ends(words):
-    # your code here
-    return
+    count = 0
+    for word in words:
+        if len(word) >= 2 and word[0] == word[-1]:
+            count += 1
+    return count
 
 
 # B. front_x
@@ -42,8 +45,14 @@ def match_ends(words):
 
 
 def front_x(words):
-    # your code here
-    return
+    this_list = []
+    that_list = []
+    for word in words:
+        if word[:1] == "x":
+            this_list.append(word)
+        else:
+            that_list.append(word)
+    return sorted(this_list) + sorted(that_list)
 
 
 # C. sort_last
@@ -54,10 +63,12 @@ def front_x(words):
 #   [(2, 2), (1, 3), (3, 4, 5), (1, 7)]
 # Hint: use a custom key= function to extract the last element from each tuple.
 
+def my_key(n):
+    return n[-1]
+
 
 def sort_last(tuples):
-    # your code here
-    return
+    return sorted(tuples, key=my_key)
 
 
 # Provided simple test() function used in main() to print
